@@ -1,0 +1,1 @@
+This is a set of files that are the source of the python project "class average mark". The point of this personal project is to make an open source script that is able to provide a set of summary data that calculates statistical data of a class's assessment task performance.
