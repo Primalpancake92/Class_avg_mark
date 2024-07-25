@@ -1,0 +1,11 @@
+This program (which is still in source) helps teachers and people who provide learning material to calculate important summary data of a class in python. So far it can only find the maximum mark, minimum mark, average mark, and median mark of a set of students or people.
+The plan of this program may expand further and possibly produce txt outputs (something I plan to do in the future). For now it only runs on the python interpreter. 
+
+Objective: 
+To provide some assistance for those working in teaching to calculate certain things instead of marking them and plugging them in directly to an online calculator. Hopefully this speeds up the marking process of some people and reallocate their time to other things.
+
+Future iterative implementations:
+- More statistical data types
+- Accepts inputs in txt file or word file format.
+- Produces a text file in exe form
+- Possibly a GUI for the late future of this project.
