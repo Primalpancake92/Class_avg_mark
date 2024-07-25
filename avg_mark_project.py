@@ -47,6 +47,7 @@ out for you.''')
             data_type = input("What would you like to calculate from the class? ")
             if data_type == "Nothing else":
                 print("It was nice working with you. Have a good day or night.")
+                break
             if data_type == "Help":
                 print('''\nHere are the following prompts you may use to let me help you out:
 - 'Average' or 'Mean'
@@ -54,6 +55,8 @@ out for you.''')
 - 'Min'\n''')
             if data_type == "Average" or data_type == "Mean": 
                 print(f"The class average {what_calculate} marks is: {class_avg_mark(student_list)}")
+            if data_type == "Median":
+                print(f"The class average {what_calculate} marks is: {class_median(student_list)}")
             if data_type == "Max":
                 print(f'The highest achieving student was {class_max_mark(student_list)}')
             if data_type == "Min":
@@ -64,38 +67,52 @@ def class_avg_mark(students: list) -> float:
     if len(students) != 0:
         total = sum(mark for _, _, mark in students)  # calculates the total mark from the length of te list.
         return total/len(students) # then returns the average
+    
     return 0.0 # if there is no entries in the list, then return 0
 
 
 def class_median(students: list) -> float:
-    students[2].sort()
-    n = len(students)
-    if n % 2 == 1:
-        median = students[n // 2]
-    else:
-        median = (students[n // 2 - 1] + students[n // 2]) / 2
-    return median
-            
+    if not students:
+        return "There are no students in your class."
 
+    marks = sorted(student[2] for student in students)
+    
+    n = len(marks)
+    mid = n // 2
+    
+    if n % 2 == 1:
+        # If odd, return the middle mark
+        median = marks[mid]
+    else:
+        # If even, return the average of the two middle marks
+        median = (marks[mid - 1] + marks[mid]) / 2
+    
+    return median
+
+            
 def class_max_mark(students: list) -> StopIteration:
-    i = 0  
+    max_mark = students[0][2]
+    max_student_mark = students[0]
+    i = 0 
     while i < len(students):
-        max_achieve = students[0]
-        if students[i] > max_achieve:
-            max_achieve = students[i]
+        if students[i][2] > max_mark:
+            max_mark = students[i][2]
+            max_student_mark = students[i]
         i += 1
-    return f"{max_achieve[0]} {max_achieve[1]}, with a mark of {max_achieve[2]:.2f}."
+    return f"{max_student_mark[0]} {max_student_mark[1]}, with a mark of {max_mark:.2f}."
 
 
 def class_min_mark(students: list) -> float:
+    min_mark = students[0][2]
+    min_student_mark = students[0]
     i = 0 
     while i < len(students):
-        min = students[0]
-        if students[i] < min:
-            min = students[i]
+        if students[i][2] < min_mark:
+            min_mark = students[i][2]
+            min_student_mark = students[i]
         i += 1
-    return f"{min[0]} {min[1]}, with a mark of {min[2]:.2f}."
-    
+    return f"{min_student_mark[0]} {min_student_mark[1]} with a mark of {min_mark:.2f}"
+
 
 def main():
     print(banner())
