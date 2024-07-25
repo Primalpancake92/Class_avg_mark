@@ -100,7 +100,7 @@ def class_max_mark(students: list) -> StopIteration:
             max_student_mark = students[i]
         i += 1
     return f"{max_student_mark[0]} {max_student_mark[1]}, with a mark of {max_mark:.2f}."
-f
+
 
 def class_min_mark(students: list) -> float:
     min_mark = students[0][2]
