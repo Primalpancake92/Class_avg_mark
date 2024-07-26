@@ -1,4 +1,5 @@
 import sys
+import math
 from art import text2art
 from input_parser import student_parser
 
@@ -100,7 +101,7 @@ def class_max_mark(students: list) -> StopIteration:
             max_student_mark = students[i]
         i += 1
     return f"{max_student_mark[0]} {max_student_mark[1]}, with a mark of {max_mark:.2f}."
-f
+
 
 def class_min_mark(students: list) -> float:
     min_mark = students[0][2]
@@ -114,6 +115,27 @@ def class_min_mark(students: list) -> float:
     return f"{min_student_mark[0]} {min_student_mark[1]} with a mark of {min_mark:.2f}"
 
 
+def std_dev(students: list) -> float:
+    mean = class_avg_mark(students)
+    n = len(students)
+    
+    diff = 0
+    i = 0 
+    while i < len(students):
+        diff += (students[i][2] - mean) ** 2
+        i += 1
+    
+    std_dev = math.sqrt((1 / n) * diff)
+    return std_dev
+
+
+def std_err(students: list) -> float:
+    n = len(students) # number of samples or the length of the list
+    error = std_dev(students) / math.sqrt(n) # Finds the standard error using standard deviation over the square root of samples
+    
+    return error #returns float value
+
+
 def main():
     print(banner())
     class_input()
@@ -121,3 +143,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
