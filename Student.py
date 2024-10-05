@@ -1,5 +1,5 @@
 class Student:
-    def __init__(self, first_name: str, last_name: str, age: int, mark: float, grade: str):
+    def __init__(self, student_ID: int, first_name: str, last_name: str, age: int, mark: float, grade: str):
         """
         Instantiates each and every student that belongs to this class. 
             
@@ -13,12 +13,17 @@ class Student:
         This is an entity that describes the information and attributes of the student,
         which is done so by the above mentioned parameters.
         """
+        self.student_ID = student_ID
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
         self.mark =  mark
         self.grade = grade
         
+    
+    def set_student_ID(self, student_ID):
+        self.student_ID = student_ID
+    
 
     def set_name(self, first_name, last_name):
         self.first_name = first_name
@@ -40,6 +45,10 @@ class Student:
     
     def set_mark(self, mark):
         self.mark = mark
+    
+    
+    def get_student_ID(self):
+        return self.student_ID
     
     
     def get_first_name(self):
