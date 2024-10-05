@@ -14,6 +14,7 @@ class Classroom:
         self.class_ID = class_ID
         self.class_size = class_size
         self.number_of_students = number_of_students
+        self.teacher_assigned = None
         self.class_details = []
     
     

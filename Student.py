@@ -99,14 +99,3 @@ class Student:
         formatted = f"Name: {self.first_name} {self.last_name}\nAge: {self.age}\nMark: {self.mark}\nGrade: {self.grade}"
         
         return formatted
-    
-
-if __name__ == "__main__":
-    student1 = Student("Alice", "Smith", 18, 85.0, "A")
-    
-    student1.set_name("Wanker", "Jerkoff")
-    print(student1.get_first_name())
-    print(student1.get_last_name())
-    student1.set_mark(100)
-    print(student1)
-    print(student1.get_summary())
