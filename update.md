@@ -7,3 +7,11 @@ Completed the general input system of the script. Have also completed a separate
 The input parsing function was implemented into another function called "student data", where inputs that have been entered in would be passed through that function. It works for most cases, however formal testing have yet to be conducted.
 
 I have only started logging progress on Git as of today. So bear with me.
+
+
+05/10/2024:
+
+Wrote the early iterations of the student, classroom, and teacher classes. 
+
+Realised that the previous iterations of my program is highly lacking in most areas and have been able to clean things up and make it more structurally sound with the proper use of 
+Object Oriented programming principles.

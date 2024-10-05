@@ -41,4 +41,7 @@ class Teacher:
     
     
     def assign_to_class(self, classroom : Classroom):
-        pass
+        if self.assigned_classroom is not None:
+            raise ValueError(f"{self.get_teacher_firstn()} {self.get_teacher_lastn()} is already assigned to {self.assigned_classroom}.")
+        self.assigned_classroom = classroom
+        

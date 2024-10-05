@@ -1,4 +1,5 @@
 from student import Student
+from teacher import Teacher
 
 class Classroom:
     def __init__(self, class_ID: int, class_size: int, number_of_students: int):
@@ -53,7 +54,6 @@ class Classroom:
         """
         return len(self.class_details)
         
-    
         
     def adding_students(self, student : Student):     
         added = False   
@@ -94,3 +94,9 @@ class Classroom:
         if self.finding_student() == True:
             return f"{student.get_first_name} {student.get_last_name()} found in {self.get_class_ID()}."
         return f"{student.get_first_name} {student.get_last_name()} not found in {self.get_class_ID()}."
+    
+    
+    def assign_teacher(self, teacher : Teacher):
+        if self.teacher_assigned is not None:
+            raise ValueError(f"{self.class_ID} is already assigned to teacher {teacher.get_teacher_ID()}.")
+        self.teacher_assigned = teacher
