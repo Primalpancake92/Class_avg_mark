@@ -28,7 +28,7 @@ class Student:
     def set_age(self, age):
         """This sets or even updates the age of the student
 
-        Arguments:
+        Args:
            age (int): This represents the age of the student
         """
         self.age = age
