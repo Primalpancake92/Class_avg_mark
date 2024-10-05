@@ -1,5 +1,3 @@
-from classroom import Classroom
-
 class Teacher:
     def __init__(self, teacher_ID: int, first_name: str, last_name: str):
         """This class constructor instantiates the teachers that are possibly
@@ -38,10 +36,4 @@ class Teacher:
     
     def get_teacher_lastn(self):
         return self.last_name
-    
-    
-    def assign_to_class(self, classroom : Classroom):
-        if self.assigned_classroom is not None:
-            raise ValueError(f"{self.get_teacher_firstn()} {self.get_teacher_lastn()} is already assigned to {self.assigned_classroom}.")
-        self.assigned_classroom = classroom
         

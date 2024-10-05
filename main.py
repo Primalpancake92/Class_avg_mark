@@ -2,7 +2,7 @@ from classroom import Classroom
 from student import Student
 from teacher import Teacher
 import statistical_values 
-import text2art
+from art import text2art
 
 
 def startup_screen():
@@ -13,3 +13,30 @@ def startup_screen():
 
 
 def program_start():
+    print(startup_screen())
+    i = 0
+    while True:
+        token = input("Enter Student details: ")
+        if token == "I am done":
+            break
+            
+        try:
+            SID, first_name, last_name, age, mark = token.split(" ")
+
+            SID = int(SID)
+            age = int(age)
+            mark = float(mark)
+            
+            students = Student(SID, first_name, last_name, age, mark)
+            
+            print(students.get_summary())
+        
+        except ValueError:
+            print("Note that the Student ID, age and mark must be a number. Please enger again.")
+        
+    
+        
+    
+
+if __name__ == "__main__":
+    program_start()

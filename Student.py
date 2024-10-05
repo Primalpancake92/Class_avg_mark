@@ -1,5 +1,5 @@
 class Student:
-    def __init__(self, student_ID: int, first_name: str, last_name: str, age: int, mark: float, grade: str):
+    def __init__(self, student_ID: int, first_name: str, last_name: str, age: int, mark: float):
         """
         Instantiates each and every student that belongs to this class. 
             
@@ -18,7 +18,7 @@ class Student:
         self.last_name = last_name
         self.age = age
         self.mark =  mark
-        self.grade = grade
+        self.grade = None
         
     
     def set_student_ID(self, student_ID):
