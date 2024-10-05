@@ -32,7 +32,7 @@ def program_start():
             print(students.get_summary())
         
         except ValueError:
-            print("Note that the Student ID, age and mark must be a number. Please enger again.")
+            print("Note that the Student ID, age and mark must be a number. Please enter again.")
         
     
         
