@@ -14,6 +14,24 @@ def startup_screen():
 
 def program_start():
     print(startup_screen())
+    try:
+        class_ID, class_size, number = input("Enter the details of the classroom: ").split(" ")
+        token = class_ID, class_size, number
+        
+        class_ID = int(class_ID)
+        class_size = int(class_size)
+        number = int(number)
+    
+        classroom = Classroom(class_ID, class_size, number)
+        
+        print(classroom.__str__())
+        
+        
+    except ValueError:
+        print("The values are all numbers and not letters or characters.")
+        
+    print(classroom.get_class_details())
+
     i = 0
     while True:
         token = input("Enter Student details: ")
@@ -28,14 +46,16 @@ def program_start():
             mark = float(mark)
             
             students = Student(SID, first_name, last_name, age, mark)
+
+            print(students.__str__())
+            classroom.adding_students(students)
             
-            print(students.get_summary())
-        
+            i += 1
+            
         except ValueError:
             print("Note that the Student ID, age and mark must be a number. Please enter again.")
-        
-    
-        
+            
+    print(classroom.get_class_details())
     
 
 if __name__ == "__main__":

@@ -42,6 +42,8 @@ class Classroom:
     
     def get_class_details(self):
         formatted = ""
+        if not self.class_details:
+            return "Your classroom is empty. Let's add some students!"
         for i in range(len(self.class_details)):
             formatted += f"{self.class_details[i]}\n"
         return formatted
@@ -56,24 +58,17 @@ class Classroom:
         
         
     def adding_students(self, student : Student):     
-        added = False   
         if len(self.class_details) > self.class_size:
             raise ValueError("There are too many students in your class.")
         else:
             self.class_details.append(student)
-            added = True
-        return added
-        
+
     
     def remove_student(self, student : Student):
-        removed = False
         for i in range(len(self.class_details)):
             if self.class_details[i] == student:
                 self.class_details.remove(self.class_details[i])
-                removed = True
                 break
-            removed = False
-        return removed 
     
     
     def students_update(self):
@@ -100,3 +95,8 @@ class Classroom:
         if self.teacher_assigned is not None:
             raise ValueError(f"{self.class_ID} is already assigned to teacher {teacher.get_teacher_ID()}.")
         self.teacher_assigned = teacher
+        
+    
+    def __str__(self) -> str:
+        formatted = f"Class ID: {self.get_class_ID()}\nClass size: {self.get_class_size()}\nNumber of students: {self.get_number_of_students()}"
+        return formatted
