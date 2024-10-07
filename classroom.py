@@ -45,7 +45,7 @@ class Classroom:
         if not self.class_details:
             return "Your classroom is empty. Let's add some students!"
         for i in range(len(self.class_details)):
-            formatted += f"{self.class_details[i]}\n"
+            formatted += f"\n{self.class_details[i]}\n"
         return formatted
 
 
