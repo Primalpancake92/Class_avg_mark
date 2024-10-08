@@ -81,21 +81,21 @@ class Student:
         return summary
         
     
-    def calculate_grade(mark):
+    def calculate_grade(self, mark):
         uni_grades = ("HD", "D", "C", "P", "F")
         
         # high_school_grading_scale = {"A", "B", "C", "D", "E"} 
         # This is consideration of the high school iteration of this application.
         
-        if 0 <= mark <= 49:
+        if 0 <= self.mark <= 49:
             return uni_grades[4]
-        elif 50 <= mark <= 64:
+        elif 50 <= self.mark <= 64:
             return uni_grades[3]
-        elif 65 <= mark <= 74:
+        elif 65 <= self.mark <= 74:
             return uni_grades[2]
-        elif 75 <= mark <= 84:
+        elif 75 <= self.mark <= 84:
             return uni_grades[1]
-        elif 85 <= mark <= 100:
+        elif 85 <= self.mark <= 100:
             return uni_grades[0]
         
         

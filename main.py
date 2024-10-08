@@ -56,7 +56,14 @@ def program_start():
             print("Note that the Student ID, age and mark must be a number. Please enter again.")
             
     print(classroom.get_class_details())
-    
+    grades = input("Would you like to calculate their grades? ")
+    if grades.lower() == "yes":
+        student_grades = ""
+        for i in range(classroom.get_number_of_students()):
+            students.set_grade()
+            student_grades += f"{students.get_grade()}\n"
+        print(student_grades)
+
 
 if __name__ == "__main__":
     program_start()
