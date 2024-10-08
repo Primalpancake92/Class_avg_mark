@@ -40,7 +40,11 @@ class Student:
         
     
     def set_grade(self):
-        self.grade = Student.calculate_grade(self.mark)
+        """This methods sets the grade by changing the current object's grade
+        through calling another method and passing the current object's mark 
+        in another method.
+        """
+        self.grade = self.calculate_grade(self.mark)
         
     
     def set_mark(self, mark):
