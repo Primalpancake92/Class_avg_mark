@@ -26,11 +26,11 @@ def program_start():
         
         print(classroom.__str__())
         
+        if len(classroom.class_details) == 0:
+            print("\nThere seems to be no students in your classroom.\n")
         
     except ValueError:
         print("The values are all numbers and not letters or characters.")
-        
-    print(classroom.get_class_details())
 
     i = 0
     while True:
@@ -49,22 +49,15 @@ def program_start():
 
             print(students.__str__())
             classroom.adding_students(students)
-            
-            
+
             i += 1
             
         except ValueError:
             print("Note that the Student ID, age and mark must be a number. Please enter again.")
-            
+
     print(classroom.get_class_details())
-    grades = input("Would you like to calculate their grades? ")
-    if grades.lower() == "yes":
-        student_grades = ""
-        for i in range(classroom.get_number_of_students()):
-            students.set_grade()
-            student_grades += f"{students.get_grade()}\n"
-        print(student_grades)
-
-
+    classroom.calculating_grades(students)
+    
+    
 if __name__ == "__main__":
     program_start()
