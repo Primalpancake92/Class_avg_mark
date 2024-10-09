@@ -34,7 +34,7 @@ def program_start():
 
     i = 0
     while True:
-        token = input("Enter Student details: ")
+        token = input("\nEnter Student details: ")
         if token == "I am done":
             break
             
@@ -55,8 +55,10 @@ def program_start():
         except ValueError:
             print("Note that the Student ID, age and mark must be a number. Please enter again.")
 
-    print(classroom.get_class_details())
+
     classroom.calculating_grades(students)
+    print(classroom.get_student_details(students))
+    
     
     
 if __name__ == "__main__":

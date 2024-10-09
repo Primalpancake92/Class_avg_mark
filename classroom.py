@@ -23,7 +23,7 @@ class Classroom:
         """Sets the ID of the classroom to the instance.
 
         Args:
-            class_ID (_type_): _description_
+            class_ID (int): _description_
         """
         self.class_ID = class_ID
         
@@ -44,12 +44,12 @@ class Classroom:
         return self.class_details
         
         
-    def get_student_details(self):
+    def get_student_details(self, student : Student):
         formatted = ""
         if not self.class_details:
             return "Your classroom is empty. Let's add some students!"
-        for i in range(len(self.class_details)):
-            formatted += f"\n{self.class_details[i]}\n"
+        for _ in range(len(self.class_details)):
+            formatted += f"\n{student.__str__()}\n"
         return formatted
 
 
@@ -90,7 +90,7 @@ class Classroom:
     
 
     def student_found_or_not(self, student : Student):
-        if self.finding_student() == True:
+        if self.finding_student(student) == True:
             return f"{student.get_first_name} {student.get_last_name()} found in {self.get_class_ID()}."
         return f"{student.get_first_name} {student.get_last_name()} not found in {self.get_class_ID()}."
     
@@ -102,19 +102,20 @@ class Classroom:
         
         
     def calculating_grades(self, student : Student):
-        grades = {"HD", "D", "C", "P", "F"}
-               
+        grades = ("HD", "D", "C", "P", "F")
+            
         for i in range(len(self.class_details)):
             if 85 <= student.get_mark() <= 100:
-                self.class_details[i][4] = str(grades[0])
+                self.class_details[i][4] = grades[0]
+                student.grade = grades[0]
             elif 75 <= student.get_mark()<= 84: 
-                self.class_details[i][4] = str(grades[1])
+                self.class_details[i][4] = grades[1]
             elif 65 <= student.get_mark()<= 74:
-                self.class_details[i][4] = str(grades[2])
+                self.class_details[i][4] = grades[2]
             elif 64 <= student.get_mark()<= 50:
-                self.class_details[i][4] = str(grades[3])
+                self.class_details[i][4] = grades[3]
             elif student.get_mark()< 50:
-                self.class_details[i][4] = str(grades[4])
+                self.class_details[i][4] = grades[4]
          
     
     def __str__(self) -> str:
