@@ -44,12 +44,12 @@ class Classroom:
         return self.class_details
         
         
-    def get_student_details(self, student : Student):
+    def get_student_details(self):
         formatted = ""
         if not self.class_details:
             return "Your classroom is empty. Let's add some students!"
-        for _ in range(len(self.class_details)):
-            formatted += f"\n{student.__str__()}\n"
+        for i in range(len(self.class_details)):
+            formatted += f"\nName: {self.class_details[i][0]} {self.class_details[i][1]}\nAge: {self.class_details[i][2]}\nMark: {self.class_details[i][3]}\nGrade: {self.class_details[i][4]}\n"
         return formatted
 
 

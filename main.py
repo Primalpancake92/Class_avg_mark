@@ -24,6 +24,8 @@ def program_start():
     
         classroom = Classroom(class_ID, class_size, number)
         
+        print(classroom.__str__())
+        
         if len(classroom.class_details) == 0:
             print("\nThere seems to be no students in your classroom.\n")
         
@@ -32,7 +34,7 @@ def program_start():
 
     i = 0
     while True:
-        token = input("\nEnter Student details: ")
+        token = input("Enter Student details: ")
         if token == "I am done":
             break
             
@@ -45,7 +47,6 @@ def program_start():
             
             students = Student(SID, first_name, last_name, age, mark)
 
-            print(students.__str__())
             classroom.adding_students(students)
 
             i += 1
@@ -55,7 +56,7 @@ def program_start():
 
 
     classroom.calculating_grades(students)
-    print(classroom.get_student_details(students))
+    print(classroom.get_student_details())
     
     
     
