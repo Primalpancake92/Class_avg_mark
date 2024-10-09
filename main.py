@@ -15,7 +15,7 @@ def startup_screen():
 def program_start():
     print(startup_screen())
     try:
-        class_ID, class_size, number = input("Enter the details of the classroom: ").split(" ")
+        class_ID, class_size, number = input("\nEnter the details of the classroom: ").split(" ")
         token = class_ID, class_size, number
         
         class_ID = int(class_ID)
@@ -23,8 +23,6 @@ def program_start():
         number = int(number)
     
         classroom = Classroom(class_ID, class_size, number)
-        
-        print(classroom.__str__())
         
         if len(classroom.class_details) == 0:
             print("\nThere seems to be no students in your classroom.\n")
