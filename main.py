@@ -48,14 +48,14 @@ def program_start():
             students = Student(SID, first_name, last_name, age, mark)
 
             classroom.adding_students(students)
-
+            classroom.calculating_grades(students)
             i += 1
             
         except ValueError:
             print("Note that the Student ID, age and mark must be a number. Please enter again.")
 
 
-    classroom.calculating_grades(students)
+   
     print(classroom.get_student_details())
     
     

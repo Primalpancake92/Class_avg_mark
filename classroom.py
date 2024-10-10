@@ -61,7 +61,7 @@ class Classroom:
         return len(self.class_details)
         
         
-    def adding_students(self, student : Student):     
+    def adding_students(self, student: Student):     
         if len(self.class_details) > self.class_size:
             raise ValueError("There are too many students in your class.")
         else:
@@ -102,20 +102,23 @@ class Classroom:
         
         
     def calculating_grades(self, student : Student):
-        grades = ("HD", "D", "C", "P", "F")
+        grades = ["HD", "D", "C", "P", "F"]
             
         for i in range(len(self.class_details)):
-            if 85 <= student.get_mark() <= 100:
+            if 85 <= self.class_details[i][3] <= 100:
                 self.class_details[i][4] = grades[0]
-                student.grade = grades[0]
-            elif 75 <= student.get_mark()<= 84: 
+            elif 75 <= self.class_details[i][3] <= 84: 
                 self.class_details[i][4] = grades[1]
-            elif 65 <= student.get_mark()<= 74:
+                student.grade = grades[1]
+            elif 65 <= self.class_details[i][3] <= 74:
                 self.class_details[i][4] = grades[2]
-            elif 64 <= student.get_mark()<= 50:
+                student.grade = grades[2]
+            elif 50 <= self.class_details[i][3] <= 64:
                 self.class_details[i][4] = grades[3]
-            elif student.get_mark()< 50:
+                student.grade = grades[3]
+            elif self.class_details[i][3] < 50:
                 self.class_details[i][4] = grades[4]
+                student.grade = grades[4]
          
     
     def __str__(self) -> str:
