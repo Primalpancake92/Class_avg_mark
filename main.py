@@ -62,7 +62,7 @@ def program_start():
             print("Note that the Student ID, age and mark must be a number. Please enter again.")
 
     print(classroom.get_student_details())
- 
+
 
 if __name__ == "__main__":
     print(startup_screen())
