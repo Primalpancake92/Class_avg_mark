@@ -1,6 +1,7 @@
 from classroom import Classroom
 from student import Student
 from teacher import Teacher
+import input_parser
 import statistical_values 
 from art import text2art
 
@@ -12,7 +13,7 @@ def startup_screen():
     return f"{border}\n{centered_lines}\n{border}"
 
 
-def program_start():
+'''def program_start():
     while True:
         try:
             class_ID, class_size, number = input("\nEnter the details of the classroom: ").split(" ")
@@ -61,10 +62,28 @@ def program_start():
         except ValueError:
             print("Note that the Student ID, age and mark must be a number. Please enter again.")
 
-    print(classroom.get_student_details())
+    print(classroom.get_student_details())'''
+    
+
+def input_gathering():
+    print("Time to create our classroom!")
+    while True: 
+        class_details_input = input("Enter the details of the classroom: ").strip()
+        class_input = input_parser.parse_class_details(class_details_input)
+        if input_parser.parse_class_details(class_input) is not None:
+            print("Classroom details have been added.")
+            break
+    
+    classroom = Classroom(class_input[0], class_input[1], class_input[2])
+    
+    print(classroom)
+        
+        
+
+    
 
 
 if __name__ == "__main__":
     print(startup_screen())
-    program_start()
+    input_gathering()
     
