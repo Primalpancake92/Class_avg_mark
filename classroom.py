@@ -3,7 +3,8 @@ from teacher import Teacher
 
 class Classroom:
     def __init__(self, class_ID: int, class_size: int, number_of_students: int):
-        """This is where all student objects will be stored and remains as an
+        """
+        This is where all student objects will be stored and remains as an
         associative entity for the students. This constructor instantiates 
         this class type.
 
@@ -28,23 +29,46 @@ class Classroom:
         self.class_ID = class_ID
         
     
-    def set_class_size(self, class_size):
+    def set_class_size(self, class_size: int):
+        """
+        This sets the size of the classroom object
+
+        Args:
+            class_size (int): an input used to set the size of the class. 
+        """
         self.class_size = class_size
     
     
     def get_class_size(self):
+        """
+        Retrns the size of the classroom.
+        """
         return self.class_size
     
     
     def get_class_ID(self):
+        """
+        Returns the ID number of the classroom.
+        """
         return self.class_ID
     
     
     def get_class_details(self):
+        """
+        Returns the list of student objects in added to the classroom.
+        """
         return self.class_details
         
         
     def get_student_details(self):
+        """
+        This function iterates through all the student objects and displays 
+        the details of each student. This would be the student ID number,
+        their first name and last name, their age, and their mark. 
+
+        Returns:
+            list: Returns a list of student objects and their attributes.
+        """
         formatted = ""
         if not self.class_details:
             return "Your classroom is empty. Let's add some students!"
@@ -54,19 +78,26 @@ class Classroom:
 
 
     def get_number_of_students(self):
-        """Counts the number of students that are in the classroom.
-        
-        Does not have any arguments as it refers to the object's attributes.
+        """
+        Counts the number of students that are in the classroom.
         """
         return len(self.class_details)
         
         
-    def adding_students(self, student: Student):     
-        if len(self.class_details) > self.class_size:
-            raise ValueError("There are too many students in your class.")
-        else:
-            self.class_details.append(student.get_summary())
+    def adding_students(self, student: Student):
+        """
 
+        Args:
+            student (Student): _description_
+
+        Raises:
+            ValueError: _description_
+        """           
+        if len(self.get_class_details()) > self.get_class_size():
+            print("There are too many students in your class.")
+            return
+        self.class_details.append(student.get_summary())
+        
     
     def remove_student(self, student : Student):
         for i in range(len(self.class_details)):

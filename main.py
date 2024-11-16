@@ -95,7 +95,7 @@ def input_gathering():
         # while the user does not input done keep asking for input
         while add_students.lower() != "done":
             # if the user inputs yes
-            if add_students.lower() == "yes":
+            if add_students.lower().strip() == "yes":
                 # enter this students' details
                 adding_students = input("Enter student details here: ")
                 # parse this input through its respective method
@@ -104,7 +104,7 @@ def input_gathering():
                 if parsed_students is not None:
                     # instantiate the object
                     student = Student(parsed_students[0], parsed_students[1], parsed_students[2], parsed_students[3], parsed_students[4])
-                    classroom.class_details.append(student)
+                    classroom.adding_students(student)
                     print(f"{student}\n")
                     print(f"{str(classroom.get_class_details())}")
             else: 
