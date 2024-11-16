@@ -70,19 +70,22 @@ def input_gathering():
     while True: 
         class_details_input = input("Enter the details of the classroom: ").strip()
         class_input = input_parser.parse_class_details(class_details_input)
-        if input_parser.parse_class_details(class_input) is not None:
-            print("Classroom details have been added.")
+        if class_input is not None:
+            print("Classroom details have been added.\n")
             break
     
     classroom = Classroom(class_input[0], class_input[1], class_input[2])
     
-    print(classroom)
+    if len(classroom.class_details) == 0:
+        print("There are no students in your classroom.")
+        add_students = input("Would you like to add some students? ")
+        while add_students.lower() != "done":
+            if add_students.lower() == "yes":
+                adding_students = input("Enter student details here:")
+                students = Student(adding_students)
+                print(students)
+            
         
-        
-
-    
-
-
 if __name__ == "__main__":
     print(startup_screen())
     input_gathering()
