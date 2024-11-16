@@ -66,24 +66,49 @@ def startup_screen():
     
 
 def input_gathering():
-    print("Time to create our classroom!")
+    """
+    Gathers user input for adding the details fof the classroom and student objects.
+    Before doing so, the inputs are split and parsed through the input_parser.py file.
+    Once it returns the inputs, which are not none, these objects are instantiatied.
+    """
+    print("Time to create our classroom!") # prints out a statement notifying the user
+    # when this is always true
     while True: 
-        class_details_input = input("Enter the details of the classroom: ").strip()
+        # ask user for input
+        class_details_input = input("Enter the details of the classroom: ").strip() # removes white space from input
+        # parses these inputs through its respective method
         class_input = input_parser.parse_class_details(class_details_input)
+        # if there is a return value
         if class_input is not None:
+            # show that the classroom details have been added
             print("Classroom details have been added.\n")
             break
-    
+    # instantiation of the classroom object using previous user input
     classroom = Classroom(class_input[0], class_input[1], class_input[2])
     
+    # if there are no members of the classrom list
     if len(classroom.class_details) == 0:
+        # say that there are no students
         print("There are no students in your classroom.")
+        # provide the user with the option to add students
         add_students = input("Would you like to add some students? ")
+        # while the user does not input done keep asking for input
         while add_students.lower() != "done":
+            # if the user inputs yes
             if add_students.lower() == "yes":
-                adding_students = input("Enter student details here:")
-                students = Student(adding_students)
-                print(students)
+                # enter this students' details
+                adding_students = input("Enter student details here: ")
+                # parse this input through its respective method
+                parsed_students = input_parser.parse_students(adding_students)
+                # if there is a return value
+                if parsed_students is not None:
+                    # instantiate the object
+                    student = Student(parsed_students[0], parsed_students[1], parsed_students[2], parsed_students[3], parsed_students[4])
+                    classroom.class_details.append(student)
+                    print(f"{student}\n")
+                    print(f"{str(classroom.get_class_details())}")
+            else: 
+                continue
             
         
 if __name__ == "__main__":

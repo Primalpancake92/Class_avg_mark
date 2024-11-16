@@ -73,4 +73,4 @@ def parse_students(student_input: str) -> list[int, str, str, int, float]:
             print("Error: enter a valid mark.")
             return
     
-    return [student_id, first_name, last_name, age, mark]
+    return student_id, first_name, last_name, age, mark
