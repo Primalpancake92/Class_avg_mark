@@ -1,8 +1,8 @@
 from classroom import Classroom
 from student import Student
 from teacher import Teacher
+import statistical_values
 import input_parser
-import statistical_values 
 from art import text2art
 
 def startup_screen():
@@ -35,24 +35,29 @@ def input_gathering():
             # show that the classroom details have been added
             print("Classroom details have been added.\n")
             break
-        
-    
     # if there are no members of the classrom list
     if not classroom.class_details:
-        # say that there are no students
+        # tells the user that there are no students
         print("There are no students in your classroom.")
-        
+        # while something is always true
         while True: 
+            # provide the user some input
             student_add = input("Would you like to add some students? ")
+            # if the input entered is done, then
             if student_add.lower().strip() == "done":
                 # prints goodbye message
                 print("Goodbye. Have a good day!")
-                return
+            # if input is yes, then
             elif student_add.lower().strip() == "yes":
+                # instantiate the student objects
                 adding_students_to_classroom(classroom)
+                #break from the loop
                 break
             else: 
+                # other inputs will not be understood and print what is below
                 print("Sorry I do not understand what you are trying to do.")
+    
+    return classroom
             
 
 def adding_students_to_classroom(classroom : Classroom):
@@ -72,7 +77,7 @@ def adding_students_to_classroom(classroom : Classroom):
             print("I am sorry, I do not konw what you are trying to say.")
         
 
-def key_performance():
+def key_performance(classroom : Classroom):
     """
     The purpose of this method is to prompt the user with some options, so they
     can analyse the classroom and get key performance indicators of the class-
@@ -81,10 +86,23 @@ def key_performance():
     Return
     """
     types = input("What would you like to find out about the classroom? ")
+    if types.strip().lower() == "mean":
+        pass
+    elif types.strip().lower() == "median":
+        pass
+    elif types.strip().lower() == "variance":
+        pass
+    elif types.strip().lower() == "standard deviation":
+        pass
+    elif types.strip().lower() == "best student":
+        statistical_values.mean_mark(classroom)
+    elif types.strip().lower() == "worst student":
+        pass
+    elif types.strip().lower() == "summary":
+        pass
     
     
-        
 if __name__ == "__main__":
     print(startup_screen())
-    input_gathering()
-    key_performance()
+    classroom_instance = input_gathering()
+    key_performance(classroom_instance)

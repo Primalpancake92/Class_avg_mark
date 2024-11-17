@@ -62,7 +62,7 @@ class Classroom:
         
     def get_student_details(self):
         """
-        This function iterates through all the student objects and displays 
+        This function iterates through all the student objects and displays  
         the details of each student. This would be the student ID number,
         their first name and last name, their age, and their mark. 
 

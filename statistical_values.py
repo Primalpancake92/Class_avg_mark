@@ -1,27 +1,8 @@
-class Statistical_values:
-    def mean_value(data: list[int]):
-        total = 0
-        for x in data:
-            total += x
-        
-        mean = total / len(data)
-        
-        return mean 
-    
+from classroom import Classroom
+from student import Student
 
-    def best_performer(data: list[int]):
-        max_score = 0
-        for mark in data: 
-            if mark > max_score: 
-                max_score = mark
-        
-        return max_score
-    
 
-    def worst_performer(data: list[int]):
-        worst_score = 0 
-        for mark in data: 
-            if mark < worst_score:
-                worst_score = mark
-                
-        return worst_score
+def mean_mark(classroom : Classroom):
+    highest_mark = 0 
+    highest_student = classroom.class_details[0]
+    print(highest_student)
