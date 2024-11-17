@@ -5,65 +5,15 @@ import input_parser
 import statistical_values 
 from art import text2art
 
-
 def startup_screen():
+    """
+    This method prints out the banner of the program.
+    """
     border = "=" * 177
     formatted_title = text2art("CLASS DATA CALCULATOR", font = 'standard')
     centered_lines = "\n".join(line.center(177) for line in formatted_title.split("\n"))
     return f"{border}\n{centered_lines}\n{border}"
 
-
-'''def program_start():
-    while True:
-        try:
-            class_ID, class_size, number = input("\nEnter the details of the classroom: ").split(" ")
-            token = class_ID, class_size, number
-            
-            if not (class_ID.isdigit() and class_size.isdigit() and number.isdigit()):
-                raise ValueError("Class ID, class size, and number of students must all be a numerical number.")
-            
-            class_ID = int(class_ID)
-            class_size = int(class_size)
-            number = int(number)
-            
-            classroom = Classroom(class_ID, class_size, number)
-            
-            
-            print(classroom.__str__())
-            
-            if len(classroom.class_details) == 0:
-                print("\nThere seems to be no students in your classroom.\n")
-            
-            if token == "end program":
-                break
-            
-        except ValueError as e:
-            print(e)
-        
-    i = 0
-    while True:
-        token = input("Enter Student details: ")
-        if token == "I am done":
-            break
-            
-        try:
-            SID, first_name, last_name, age, mark = token.split(" ")
-
-            SID = int(SID)
-            age = int(age)
-            mark = float(mark)
-            
-            students = Student(SID, first_name, last_name, age, mark)
-
-            classroom.adding_students(students)
-            classroom.calculating_grades(students)
-            i += 1
-            
-        except ValueError:
-            print("Note that the Student ID, age and mark must be a number. Please enter again.")
-
-    print(classroom.get_student_details())'''
-    
 
 def input_gathering():
     """
@@ -80,41 +30,61 @@ def input_gathering():
         class_input = input_parser.parse_class_details(class_details_input)
         # if there is a return value
         if class_input is not None:
+            # instantiates user inputs as classroom objects
+            classroom = Classroom(class_input[0], class_input[1], class_input[2])
             # show that the classroom details have been added
             print("Classroom details have been added.\n")
             break
-    # instantiation of the classroom object using previous user input
-    classroom = Classroom(class_input[0], class_input[1], class_input[2])
+        
     
     # if there are no members of the classrom list
-    if len(classroom.class_details) == 0:
+    if not classroom.class_details:
         # say that there are no students
         print("There are no students in your classroom.")
-        # ask the user for options of adding students into the classroom
-        student_add = input("Would you like to add some students? ")
-        # if the input is 'done', then program ends
-        if student_add.lower().strip() == "done":
-            # prints goodbye message
-            print("Goodbye. Have a good day!")
-        # however if the input is 'yes'
-        elif student_add.lower().strip() == "yes":
-            # while always true
-            while True:
-                adding_students = input("Please enter student details: ")
-                parsed_students = input_parser.parse_students(adding_students)
-                if parsed_students is not None:
-                    # instantiate the object
-                    student = Student(parsed_students[0], parsed_students[1], parsed_students[2], parsed_students[3], parsed_students[4])
-                    classroom.adding_students(student)
-                    print(f"{str(classroom.get_class_details())}")
-    
-        else: 
-            print("Sorry I do not understand what you are trying to do.")
-            student_add
         
+        while True: 
+            student_add = input("Would you like to add some students? ")
+            if student_add.lower().strip() == "done":
+                # prints goodbye message
+                print("Goodbye. Have a good day!")
+                return
+            elif student_add.lower().strip() == "yes":
+                adding_students_to_classroom(classroom)
+                break
+            else: 
+                print("Sorry I do not understand what you are trying to do.")
+            
+
+def adding_students_to_classroom(classroom : Classroom):
+    while True:
+        adding_students = input("Please enter student details: ")
+        if adding_students.lower().strip() == "i am done":
+            print("All students have been added successfully.")
+            print(f"This is the classroom:\n{classroom.get_class_details()}")
+            return
+        parsed_students = input_parser.parse_students(adding_students)
+        if parsed_students is not None:
+            # instantiate the object
+            student = Student(parsed_students[0], parsed_students[1], parsed_students[2], parsed_students[3], parsed_students[4])
+            classroom.adding_students(student)
+            print(f"{student.get_first_name()} {student.get_last_name()} was added.")
+        else: 
+            print("I am sorry, I do not konw what you are trying to say.")
+        
+
+def key_performance():
+    """
+    The purpose of this method is to prompt the user with some options, so they
+    can analyse the classroom and get key performance indicators of the class-
+    room.
+
+    Return
+    """
+    types = input("What would you like to find out about the classroom? ")
+    
     
         
 if __name__ == "__main__":
     print(startup_screen())
     input_gathering()
-    
+    key_performance()
