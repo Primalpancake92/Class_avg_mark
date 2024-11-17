@@ -90,26 +90,29 @@ def input_gathering():
     if len(classroom.class_details) == 0:
         # say that there are no students
         print("There are no students in your classroom.")
-        # provide the user with the option to add students
-        add_students = input("Would you like to add some students? ")
-        # while the user does not input done keep asking for input
-        while add_students.lower() != "done":
-            # if the user inputs yes
-            if add_students.lower().strip() == "yes":
-                # enter this students' details
-                adding_students = input("Enter student details here: ")
-                # parse this input through its respective method
+        # ask the user for options of adding students into the classroom
+        student_add = input("Would you like to add some students? ")
+        # if the input is 'done', then program ends
+        if student_add.lower().strip() == "done":
+            # prints goodbye message
+            print("Goodbye. Have a good day!")
+        # however if the input is 'yes'
+        elif student_add.lower().strip() == "yes":
+            # while always true
+            while True:
+                adding_students = input("Please enter student details: ")
                 parsed_students = input_parser.parse_students(adding_students)
-                # if there is a return value
                 if parsed_students is not None:
                     # instantiate the object
                     student = Student(parsed_students[0], parsed_students[1], parsed_students[2], parsed_students[3], parsed_students[4])
                     classroom.adding_students(student)
-                    print(f"{student}\n")
                     print(f"{str(classroom.get_class_details())}")
-            else: 
-                continue
-            
+    
+        else: 
+            print("Sorry I do not understand what you are trying to do.")
+            student_add
+        
+    
         
 if __name__ == "__main__":
     print(startup_screen())
