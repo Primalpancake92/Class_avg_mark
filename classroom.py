@@ -41,7 +41,7 @@ class Classroom:
     
     def get_class_size(self):
         """
-        Retrns the size of the classroom.
+        Returns the size of the classroom.
         """
         return self.class_size
     

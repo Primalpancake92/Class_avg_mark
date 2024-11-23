@@ -1,15 +1,17 @@
-from classroom import Classroom
-
 def parse_class_details(input: str) -> tuple[int, int, int] | None:
     tokens = input.split(" ")
     
     if len(tokens) != 3:
         print("""There are too many or to little arguments.
-              <classroom ID> <classroom size> <number of 
-              students enrolled in the classroom>""")
+<classroom ID> <classroom size> <number of 
+students enrolled in the classroom>""")
         return
     
     class_ID, class_size, students_enrolled = tokens
+    
+    if len(class_ID) != 3:
+        print("The class ID number only has 3 digits.")
+        return
         
     try: 
         class_ID = int(class_ID)

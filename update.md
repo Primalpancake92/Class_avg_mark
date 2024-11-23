@@ -15,3 +15,10 @@ Wrote the early iterations of the student, classroom, and teacher classes.
 
 Realised that the previous iterations of my program is highly lacking in most areas and have been able to clean things up and make it more structurally sound with the proper use of 
 Object Oriented programming principles.
+
+
+24/11/2024:
+
+Right now the basic functions of the program operate as expected and a large majority of the program has been written. Everything is almost complete and I hope by the end of the year, this project's initial phase will be complete. 
+
+Once this is completed, the next phase is using a front end langauge to program the GUI and given an open source API, the possiblity of deploying this app is highly likely by the end of the next year.
