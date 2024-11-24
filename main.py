@@ -91,7 +91,7 @@ def key_performance(classroom : Classroom):
     elif types.strip().lower() == "median":
         return statistical_values.class_median(classroom)
     elif types.strip().lower() == "variance":
-        pass
+        return statistical_values.variance(classroom)
     elif types.strip().lower() == "standard deviation":
         return statistical_values.std_deviation(classroom)
     elif types.strip().lower() == "best student":

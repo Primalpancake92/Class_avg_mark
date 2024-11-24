@@ -2,7 +2,7 @@ from classroom import Classroom
 from student import Student
 import math
 
-def mean_mark(classroom : Classroom) -> int:
+def mean_mark(classroom : Classroom) -> float:
     total = 0
     for student in classroom.class_details:
         total += student[3]
@@ -40,15 +40,29 @@ def class_median(classroom : Classroom) -> int:
 
 
 def std_deviation(classroom : Classroom) -> float:
-    divisor = len(classroom.class_details)
+    divisor = len(classroom.class_details) - 1
     dividend = 0
 
     for student in classroom.class_details:
-        dividend += (student[3] - mean_mark(classroom))**2
+        dividend += (student[3] - mean_mark(classroom)) ** 2 
 
+    print(dividend)
+    
     std_dev = math.sqrt(dividend / divisor)
     
-    return std_dev
+    return f"{std_dev:.2f}"
+
+
+def variance(classroom : Classroom):
+    dividend = 0
+    divisor = len(classroom.class_details) - 1
+    
+    for student in classroom.class_details:
+        dividend += (student[3] - mean_mark(classroom)) ** 2
+    
+    var = (dividend) / divisor
+    
+    return f"{var:.2f}"
 
 
 def best_student(classroom : Classroom) -> list[Student]:
