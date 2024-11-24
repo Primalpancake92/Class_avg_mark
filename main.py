@@ -89,15 +89,15 @@ def key_performance(classroom : Classroom):
     if types.strip().lower() == "mean":
         return statistical_values.mean_mark(classroom)
     elif types.strip().lower() == "median":
-        pass
+        return statistical_values.class_median(classroom)
     elif types.strip().lower() == "variance":
         pass
     elif types.strip().lower() == "standard deviation":
-        pass
+        return statistical_values.std_deviation(classroom)
     elif types.strip().lower() == "best student":
-        pass
+        return statistical_values.best_student(classroom)
     elif types.strip().lower() == "worst student":
-        pass
+        return statistical_values.worst_student(classroom)
     elif types.strip().lower() == "summary":
         pass
     
@@ -106,3 +106,4 @@ if __name__ == "__main__":
     print(startup_screen())
     classroom_instance = input_gathering()
     print(key_performance(classroom_instance))
+        
