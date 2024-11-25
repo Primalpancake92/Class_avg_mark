@@ -106,6 +106,7 @@ def key_performance(classroom : Classroom):
             print(result)
         else:
             print("I do not know what you are trying to say.")
+
     
 if __name__ == "__main__":
     print(startup_screen())

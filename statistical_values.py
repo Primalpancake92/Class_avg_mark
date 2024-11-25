@@ -88,4 +88,23 @@ def worst_student(classroom : Classroom) -> list[Student]:
 
 
 def summary(classroom : Classroom):
-    pass
+    best = best_student(classroom)
+    worst = worst_student(classroom)
+    best_in_text = f"{best[0]} {best[1]} ({best[3]})"
+    worst_in_text = f"{worst[0]} {worst[1]} ({worst[3]})"
+    
+    summary_text = (
+        "=" * 56 + "\n" +
+        "Summary Statistics".center(56) + "\n" +
+        "=" * 56 + "\n" +
+        f"{'Statistic'.center(28)}{'Value'.center(28)}\n" +
+        "-" * 56 + "\n" +
+        f"{'Mean':<30}{mean_mark(classroom):>26.2f}\n" +
+        f"{'Median':<30}{class_median(classroom):>26.2f}\n" +
+        f"{'Standard Deviation':<30}{std_deviation(classroom):>26}\n" +
+        f"{'Variance':<30}{variance(classroom):>26}\n" +
+        f"{'Best Student':<30}{best_in_text:>26}\n" +
+        f"{'Worst Student':<30}{worst_in_text:>26}\n" +
+        "=" * 56
+    )
+    return summary_text
