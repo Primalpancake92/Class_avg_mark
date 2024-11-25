@@ -74,10 +74,11 @@ def adding_students_to_classroom(classroom : Classroom):
             classroom.adding_students(student)
             print(f"{student.get_first_name()} {student.get_last_name()} was added.")
         else: 
-            print("I am sorry, I do not konw what you are trying to say.")
+            print("I am sorry, I do not know what you are trying to say.")
         
 
 def key_performance(classroom : Classroom):
+    # Use a dictionary to clean this up. It is too repetitive.
     """
     The purpose of this method is to prompt the user with some options, so they
     can analyse the classroom and get key performance indicators of the class-
@@ -85,22 +86,26 @@ def key_performance(classroom : Classroom):
 
     Return
     """
-    types = input("What would you like to find out about the classroom? ")
-    if types.strip().lower() == "mean":
-        return statistical_values.mean_mark(classroom)
-    elif types.strip().lower() == "median":
-        return statistical_values.class_median(classroom)
-    elif types.strip().lower() == "variance":
-        return statistical_values.variance(classroom)
-    elif types.strip().lower() == "standard deviation":
-        return statistical_values.std_deviation(classroom)
-    elif types.strip().lower() == "best student":
-        return statistical_values.best_student(classroom)
-    elif types.strip().lower() == "worst student":
-        return statistical_values.worst_student(classroom)
-    elif types.strip().lower() == "summary":
-        pass
+    prompts = {
+        "mean" : statistical_values.mean_mark,
+        "median" : statistical_values.class_median,
+        "variance" : statistical_values.variance,
+        "standard deviation" : statistical_values.std_deviation,
+        "best student" : statistical_values.best_student,
+        "worst student" : statistical_values.worst_student,
+        "summary" : statistical_values.summary
+    }
     
+    while True:
+        types = input("What would you like to find out about the classroom? ").strip().lower()
+        
+        if types == "nothing else":
+            return "Exiting the performance analysis."
+        if types in prompts:
+            result = prompts[types](classroom)
+            print(result)
+        else:
+            print("I do not know what you are trying to say.")
     
 if __name__ == "__main__":
     print(startup_screen())

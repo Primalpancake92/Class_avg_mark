@@ -45,8 +45,6 @@ def std_deviation(classroom : Classroom) -> float:
 
     for student in classroom.class_details:
         dividend += (student[3] - mean_mark(classroom)) ** 2 
-
-    print(dividend)
     
     std_dev = math.sqrt(dividend / divisor)
     
@@ -87,3 +85,7 @@ def worst_student(classroom : Classroom) -> list[Student]:
             worst_student = student
         
     return worst_student
+
+
+def summary(classroom : Classroom):
+    pass
