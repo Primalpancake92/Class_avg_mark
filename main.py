@@ -93,7 +93,8 @@ def key_performance(classroom : Classroom):
         "standard deviation" : statistical_values.std_deviation,
         "best student" : statistical_values.best_student,
         "worst student" : statistical_values.worst_student,
-        "summary" : statistical_values.summary
+        "summary" : statistical_values.summary,
+        "range" : statistical_values.class_range
     }
     
     while True:

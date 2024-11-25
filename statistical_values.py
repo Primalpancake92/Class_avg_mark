@@ -87,6 +87,14 @@ def worst_student(classroom : Classroom) -> list[Student]:
     return worst_student
 
 
+def class_range(classroom : Classroom) -> float:
+    max = best_student(classroom)
+    min = worst_student(classroom)
+    
+    range = max[3] - min[3]
+    return range
+
+
 def summary(classroom : Classroom):
     best = best_student(classroom)
     worst = worst_student(classroom)
@@ -102,7 +110,8 @@ def summary(classroom : Classroom):
         f"{'Mean':<30}{mean_mark(classroom):>26.2f}\n" +
         f"{'Median':<30}{class_median(classroom):>26.2f}\n" +
         f"{'Standard Deviation':<30}{std_deviation(classroom):>26}\n" +
-        f"{'Variance':<30}{variance(classroom):>26}\n" +
+        f"{'Variance':<30}{variance(classroom):>26}\n" + 
+        f"{'Range':<30}{class_range(classroom):>26}\n" + 
         f"{'Best Student':<30}{best_in_text:>26}\n" +
         f"{'Worst Student':<30}{worst_in_text:>26}\n" +
         "=" * 56
