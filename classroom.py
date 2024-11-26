@@ -57,7 +57,12 @@ class Classroom:
         """
         Returns the list of student objects in added to the classroom.
         """
-        return self.class_details
+        classroom = []
+        
+        for student in self.class_details:
+            classroom.append(student.get_summary())
+        
+        return classroom
         
         
     def get_student_details(self):

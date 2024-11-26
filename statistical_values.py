@@ -5,7 +5,8 @@ import math
 def mean_mark(classroom : Classroom) -> float:
     total = 0
     for student in classroom.class_details:
-        total += student[3]
+        if isinstance(student, Student):
+            total += student.get_mark()
     
     mean = total / len(classroom.class_details)
     
@@ -16,7 +17,8 @@ def class_median(classroom : Classroom) -> int:
     list_of_marks = []
     
     for student in classroom.class_details:
-        list_of_marks.append(student[3])
+        if isinstance(student, Student):
+            list_of_marks.append(student.get_mark())
 
     # Using selection sort
     n = len(list_of_marks)
@@ -44,7 +46,8 @@ def std_deviation(classroom : Classroom) -> float:
     dividend = 0
 
     for student in classroom.class_details:
-        dividend += (student[3] - mean_mark(classroom)) ** 2 
+        if isinstance(student, Student):
+            dividend += (student.get_mark() - mean_mark(classroom)) ** 2 
     
     std_dev = math.sqrt(dividend / divisor)
     
@@ -56,7 +59,8 @@ def variance(classroom : Classroom):
     divisor = len(classroom.class_details) - 1
     
     for student in classroom.class_details:
-        dividend += (student[3] - mean_mark(classroom)) ** 2
+        if isinstance(student, Student):
+            dividend += (student.get_mark() - mean_mark(classroom)) ** 2
     
     var = (dividend) / divisor
     
@@ -68,11 +72,12 @@ def best_student(classroom : Classroom) -> list[Student]:
     best_mark = 0
     
     for student in classroom.class_details:
-        if student[3] > best_mark:
-            best_mark = student[3]
-            best_student = student
+        if isinstance(student, Student):
+            if student.get_mark() > best_mark:
+                best_mark = student.get_mark()
+                best_student = student
 
-    return best_student
+    return best_student.get_summary()
 
 
 def worst_student(classroom : Classroom) -> list[Student]:
@@ -80,11 +85,12 @@ def worst_student(classroom : Classroom) -> list[Student]:
     worst_mark = 100
     
     for student in classroom.class_details:
-        if student[3] < worst_mark:
-            worst_mark = student[3]
-            worst_student = student
+        if isinstance(student, Student):
+            if student.get_mark() < worst_mark:
+                worst_mark = student.get_mark()
+                worst_student = student
         
-    return worst_student
+    return worst_student.get_summary()
 
 
 def class_range(classroom : Classroom) -> float:

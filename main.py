@@ -65,7 +65,7 @@ def adding_students_to_classroom(classroom : Classroom):
         adding_students = input("Please enter student details: ")
         if adding_students.lower().strip() == "i am done":
             print("All students have been added successfully.")
-            print(f"This is the classroom:\n{classroom.get_student_details()}")
+            print(f"This is the classroom:\n{classroom.get_class_details()}")
             break
         parsed_students = input_parser.parse_students(adding_students)
         if parsed_students is not None:
@@ -84,7 +84,9 @@ def find_class_grades(classroom : Classroom):
             for student in classroom.class_details:
                 if isinstance(student, Student):
                     grade = student.calculate_grade(student.get_mark())
+                    student.set_grade()
                     print(f"Grade calculated for {student.get_first_name()} {student.get_last_name()}: {grade}")
+                    
         elif grades == "no":
             break
         else:
@@ -127,5 +129,5 @@ if __name__ == "__main__":
     print(startup_screen())
     classroom_instance = input_gathering()
     print(find_class_grades(classroom_instance))
+    print(classroom_instance.get_class_details())
     print(key_performance(classroom_instance))
-        
