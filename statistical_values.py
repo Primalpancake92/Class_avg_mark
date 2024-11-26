@@ -101,7 +101,7 @@ def summary(classroom : Classroom):
     best_in_text = f"{best[0]} {best[1]} ({best[3]})"
     worst_in_text = f"{worst[0]} {worst[1]} ({worst[3]})"
     
-    summary_text = (
+    summary_text = ("\n\n" + 
         "=" * 56 + "\n" +
         "Summary Statistics".center(56) + "\n" +
         "=" * 56 + "\n" +
@@ -114,6 +114,6 @@ def summary(classroom : Classroom):
         f"{'Range':<30}{class_range(classroom):>26}\n" + 
         f"{'Best Student':<30}{best_in_text:>26}\n" +
         f"{'Worst Student':<30}{worst_in_text:>26}\n" +
-        "=" * 56
+        "=" * 56 + "\n\n"
     )
     return summary_text

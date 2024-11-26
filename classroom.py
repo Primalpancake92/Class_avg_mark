@@ -72,11 +72,13 @@ class Classroom:
         formatted = ""
         if not self.class_details:
             return "Your classroom is empty. Let's add some students!"
-        for i in range(len(self.class_details)):
-            formatted += f"\nName: {self.class_details[i][0]} {self.class_details[i][1]}\nAge: {self.class_details[i][2]}\nMark: {self.class_details[i][3]}\nGrade: {self.class_details[i][4]}\n"
+        for student in self.class_details:
+            if isinstance(student, Student):
+                formatted += student.__str__()
+        
         return formatted
-
-
+  
+  
     def get_number_of_students(self):
         """
         Counts the number of students that are in the classroom.
@@ -96,8 +98,9 @@ class Classroom:
         if len(self.get_class_details()) > self.get_class_size():
             print("There are too many students in your class.")
             return
-        self.class_details.append(student.get_summary())
+        self.class_details.append(student)
         
+        return self.class_details
     
     def remove_student(self, student : Student):
         for i in range(len(self.class_details)):
@@ -133,7 +136,7 @@ class Classroom:
         
         
     def calculating_grades(self, student : Student):
-        grades = ["HD", "D", "C", "P", "F"]
+        grades = ("HD", "D", "C", "P", "F")
             
         for i in range(len(self.class_details)):
             if 85 <= self.class_details[i][3] <= 100:

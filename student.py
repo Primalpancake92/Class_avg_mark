@@ -100,6 +100,6 @@ class Student:
         
         
     def __str__(self) -> str:
-        formatted = f"Name: {self.first_name} {self.last_name}\nAge: {self.age}\nMark: {self.mark}\nGrade: {self.grade}"
+        formatted = f"\nName: {self.first_name} {self.last_name}\nAge: {self.age}\nMark: {self.mark}\nGrade: {self.grade}\n"
         
         return formatted

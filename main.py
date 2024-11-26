@@ -65,8 +65,8 @@ def adding_students_to_classroom(classroom : Classroom):
         adding_students = input("Please enter student details: ")
         if adding_students.lower().strip() == "i am done":
             print("All students have been added successfully.")
-            print(f"This is the classroom:\n{classroom.get_class_details()}")
-            return
+            print(f"This is the classroom:\n{classroom.get_student_details()}")
+            break
         parsed_students = input_parser.parse_students(adding_students)
         if parsed_students is not None:
             # instantiate the object
@@ -76,6 +76,20 @@ def adding_students_to_classroom(classroom : Classroom):
         else: 
             print("I am sorry, I do not know what you are trying to say.")
         
+
+def find_class_grades(classroom : Classroom):
+    while True:
+        grades = input("Would you like to calculate grades? ").lower().strip()
+        if grades == "yes":
+            for student in classroom.class_details:
+                if isinstance(student, Student):
+                    grade = student.calculate_grade(student.get_mark())
+                    print(f"Grade calculated for {student.get_first_name()} {student.get_last_name()}: {grade}")
+        elif grades == "no":
+            break
+        else:
+            print("Sorry I do not understand.")
+            
 
 def key_performance(classroom : Classroom):
     # Use a dictionary to clean this up. It is too repetitive.
@@ -112,5 +126,6 @@ def key_performance(classroom : Classroom):
 if __name__ == "__main__":
     print(startup_screen())
     classroom_instance = input_gathering()
+    print(find_class_grades(classroom_instance))
     print(key_performance(classroom_instance))
         
